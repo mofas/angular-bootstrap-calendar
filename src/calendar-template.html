@@ -1,0 +1,31 @@
+<div class="calendar">
+	<div class="clearfix calendarHeader row"> 		
+		<div class="date col-sm-6 col-md-6 col-lg-6">{{currentDate.getMonthFormatted() }}/{{currentDate.getFullYear() }}</div> 
+		<div class="btn-group col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-sm-4 col-md-3 col-lg-3"> 
+			<button class="btn btn-default" ng-click="navigate.prevMotnth()">{{language.prevMonth}}</button> 
+			<button class="btn btn-default" ng-click="navigate.thisMotnth()">{{language.thisMonth}}</button> 
+			<button class="btn btn-default" ng-click="navigate.nextMotnth()">{{language.nextMonth}}</button> 
+		</div> 
+	</div> 
+	<div class="cal-row-fluid cal-row-head">
+		<div class="cal-span1">{{language.d1}}</div>
+		<div class="cal-span1">{{language.d2}}</div>
+		<div class="cal-span1">{{language.d3}}</div>
+		<div class="cal-span1">{{language.d4}}</div>
+		<div class="cal-span1">{{language.d5}}</div>
+		<div class="cal-span1">{{language.d6}}</div>
+		<div class="cal-span1">{{language.d0}}</div>
+	</div>
+	<div class="cal-month-box">
+
+	<div class="cal-row-fluid" ng-repeat="week in month">
+		<div class="cal-span1 cal-cell" ng-repeat="day in week">
+			<div class="cal-month-day" ng-class="{'cal-day-outmonth' : day.outmonth , 'cal-day-weekend' : day.day == 6 || day.day == 7 , 'cal-day-today' : day.isToday }">
+				<span class="pull-right" data-cal-date="{{day.dateFormatted}}" data-cal-view="day">{{day.date}}</span>
+				<div class="content">			
+					<div ng-html="day.content"></div>			
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>

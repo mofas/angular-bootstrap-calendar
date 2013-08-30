@@ -1,0 +1,111 @@
+<html ng-app="calendarApp">
+  <head>
+      <title>Angular Bootstrap Calendar</title>
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="src/calendar.css">
+      <style>
+
+        .heightlight{          
+          padding: 9px 14px;
+          margin-bottom: 14px;
+          background-color: #F7F7F9;
+          border: 1px solid #E1E1E8;
+          border-radius: 4px;
+          background: #fff;
+        }
+        .well{
+          background: #ffd;
+        }
+
+      </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+      <script src="src/calendar.js"></script>
+  </head>
+  <body>
+        
+  <h1 class="alert alert-danger" style="text-align: center;">WARNING: UNDER CONSTRUCTION</h1>
+  
+  <div class="container">
+    <h1 class="em center">Angular Bootstrap Calendar</h1>    
+    <p class="lead">Simple, No jQuery dependency</p>
+    <div id="Installation">
+      <ol>
+        <li>Download the files - calenar.js, calenar.css, calendar-template.html</li>
+        <li>
+          Includeing files.<br/>
+          <code>
+            &lt;link rel="stylesheet" href="calendar.css"&gt;<br/>
+            &lt;script src="calendar.js"&gt;&lt;/script&gt;
+          </code>      
+        </li>
+        <li>
+          Using directive<br/>
+          <code>
+            &lt;calendar&gt;&lt;/calendar&gt;
+          </code>
+        </li>
+      </ol>            
+    </div>
+    <div id="example">      
+      <div class="heightlight">
+        <h3 class="lead">Example: Basic</h3>
+        <p>
+          <code>
+            &lt;calendar&gt;&lt;/calendar&gt;
+          </code>
+        </p>
+        <div class="well">
+          <calendar></calendar>      
+        </div>
+      </div>
+
+      <div class="heightlight">
+        <h3 class="lead">Example: Indicate year and month</h3>
+        <p>          
+          <code>
+            &lt;calendar calendar-month="11" calendar-year="2014"&gt;&lt;/calendar&gt;
+          </code>
+        </p>
+        <div class="well">
+          <calendar calendar-month="11" calendar-year="2014"></calendar>      
+        </div>
+      </div>
+
+      <div class="heightlight">
+        <h3 class="lead">Example: Inject some content</h3>
+        <p>
+          $scope.calendarContent = {"2013":{"8":{"29":
+            [
+              Dinner: "&lt;a href=\"#/link\"&gt; Resturant address &lt;/a&gt;"
+            ]
+          }}]);<br/>
+          <code>
+            &lt;calendar calendar-content="calendarContent" calendar-month="8" calendar-year="2013"&gt;&lt;/calendar&gt;
+          </code>
+        </p>
+        <div class="well">
+          <calendar content= ></calendar>      
+        </div>
+      </div>
+
+
+
+    </div>    
+    <div id="API">
+      <h3 class="lead">API</h3>
+
+    </div>
+  </div>
+
+  
+  <script>
+
+    var app = angular.module('calendarApp', ['simpleCalendar']);
+
+    var MainCtrl = function($scope) {
+
+    }
+  </script>
+
+  </body>
+</html>
