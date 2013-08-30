@@ -5,14 +5,47 @@ Simple, Elegant, No jQuery Dependency.
 But. not finish ye..
 
 
-## Usage
+## Installation
+
+Download the three files:
+1.src/calendar.css
+2.src/calendar.js
+3.src/calendar-template.html
+
+modifing templateUrl in calendar.js to indicate path of your calendar-template.html location.
 
 
+ 
+## Example
 
+1. Basic usage
 ```
 <calendar></calendar>
 ```
 
+
+2. Assigning year and month
+```
+<calendar calendar-month="11" calendar-year="2014"></calendar>  
+```
+
+
+3. Injecting some content
+```
+<calendar calendar-month="8" calendar-year="2013" calendar-content="calendarContent" ></calendar>
+	$scope.calendarContent = {
+        "2013":
+        {
+          "8":
+          {
+            "29":
+            [
+              "Google it: <a href=\"http://google.com\" target=\"_blank\">Open Tab</a>"
+            ]
+          }
+        }
+	};    
+```
 
 ## API
 

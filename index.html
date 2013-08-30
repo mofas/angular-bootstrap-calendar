@@ -25,7 +25,7 @@
         
   <h1 class="alert alert-danger" style="text-align: center;">WARNING: UNDER CONSTRUCTION</h1>
   
-  <div class="container">
+  <div class="container" ng-controller="MainCtrl">
     <h1 class="em center">Angular Bootstrap Calendar</h1>    
     <p class="lead">Simple, No jQuery dependency</p>
     <div id="Installation">
@@ -46,6 +46,8 @@
         </li>
       </ol>            
     </div>
+
+    
     <div id="example">      
       <div class="heightlight">
         <h3 class="lead">Example: Basic</h3>
@@ -60,7 +62,7 @@
       </div>
 
       <div class="heightlight">
-        <h3 class="lead">Example: Indicate year and month</h3>
+        <h3 class="lead">Example: Assigning year and month</h3>
         <p>          
           <code>
             &lt;calendar calendar-month="11" calendar-year="2014"&gt;&lt;/calendar&gt;
@@ -72,25 +74,25 @@
       </div>
 
       <div class="heightlight">
-        <h3 class="lead">Example: Inject some content</h3>
+        <h3 class="lead">Example: Injecting some content</h3>
         <p>
-          $scope.calendarContent = {"2013":{"8":{"29":
-            [
-              Dinner: "&lt;a href=\"#/link\"&gt; Resturant address &lt;/a&gt;"
-            ]
-          }}]);<br/>
+          $scope.calendarContent = <br/>
+            {"2013":{"8":{"29":  <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;["Google it:&lt;a href=\"http://google.com\" target="_blank" &gt;  Open Tab &lt;/a&gt;"]<br/>
+          }}]);<br/>          
           <code>
             &lt;calendar calendar-content="calendarContent" calendar-month="8" calendar-year="2013"&gt;&lt;/calendar&gt;
           </code>
         </p>
         <div class="well">
-          <calendar content= ></calendar>      
+
+          <calendar calendar-month="8" calendar-year="2013" calendar-content="calendarContent" ></calendar>      
         </div>
       </div>
 
-
-
     </div>    
+
+
     <div id="API">
       <h3 class="lead">API</h3>
 
@@ -103,7 +105,18 @@
     var app = angular.module('calendarApp', ['simpleCalendar']);
 
     var MainCtrl = function($scope) {
-
+      $scope.calendarContent = {
+        "2013":
+        {
+          "8":
+          {
+            "29":
+            [
+              "Google it: <a href=\"http://google.com\" target=\"_blank\">Open Tab</a>"
+            ]
+          }
+        }
+      };    
     }
   </script>
 

@@ -5,33 +5,32 @@ var app = angular.module('simpleCalendar', []);
 
 var language = {
 
-    ms0: '一月',
-    ms1: '二月',
-    ms2: '三月',
-    ms3: '四月',
-    ms4: '五月',
-    ms5: '六月',
-    ms6: '七月',
-    ms7: '八月',
-    ms8: '九月',
-    ms9: '十月',
-    ms10: '十一月',
-    ms11: '十二月',
+    ms0: 'January',
+    ms1: 'February',
+    ms2: 'March',
+    ms3: 'April',
+    ms4: 'May',
+    ms5: 'June',
+    ms6: 'July',
+    ms7: 'August',
+    ms8: 'September',
+    ms9: 'October',
+    ms10: 'November',
+    ms11: 'December',
 
-    d0: '星期日',
-    d1: '星期一',
-    d2: '星期二',
-    d3: '星期三',
-    d4: '星期四',
-    d5: '星期五',
-    d6: '星期六',
+    d0: 'Sunday',
+    d1: 'Monday',
+    d2: 'Tuesday',
+    d3: 'Wednesday',
+    d4: 'Thursday',
+    d5: 'Friday',
+    d6: 'Saturday',
 
-    thisMonth: "本月",
-    prevMonth: "上個月",
-    nextMonth: "下個月",
+    thisMonth: "This month",
+    prevMonth: "Prev",
+    nextMonth: "Next",
 
 };
-
 
 Date.prototype.getMonthFormatted = function() {
     var month = this.getMonth() + 1;
@@ -39,36 +38,58 @@ Date.prototype.getMonthFormatted = function() {
 }
 
 
-app.controller('calendarController', ['$scope', '$element', 
-    function ($scope, $element) {        
-        var ctrl = this;
-        var contentObj = $scope.content;
+app.directive('ngHtml', function() {
+    return function(scope, element, attrs) {
+        scope.$watch(attrs.ngHtml, function(value) {
+            element[0].innerHTML = value;
+        });
+    }
+});
 
-        $scope.today = new Date();
-        $scope.currentDate = new Date();        
-        $scope.language = language;
-        $scope.navigate = {};
+
+var calendarLinkFunction = function (scope, element) {                
+        var contentObj = scope.content;     
+        console.log(contentObj);
+        var targetMonth = parseInt(scope.assignedMonth, 10),
+            targetYear = parseInt(scope.assignedyear, 10);
+
+        if(
+            !isNaN(targetMonth) &&
+            !isNaN(targetYear) &&
+            targetMonth > 0 &&
+            targetMonth < 12
+         ){            
+            scope.currentDate = new Date(targetYear, targetMonth, 0);
+        }
+        else{
+            scope.currentDate = new Date();   
+        }
+
+        scope.today = new Date();
+        scope.language = language;
+        scope.navigate = {};
 
         // month between 1 and 12
         var daysInMonth = function(month,year){            
             return new Date(year, month, 0).getDate();
         }
 
-        $scope.navigate.prevMotnth = function(){                  
-            $scope.currentDate.setMonth($scope.currentDate.getMonth()-1);
-            ctrl.refreshCalendar();
+        scope.navigate.prevMotnth = function(){                  
+            scope.currentDate.setMonth(scope.currentDate.getMonth()-1);
+            refreshCalendar();
         }                        
-        $scope.navigate.nextMotnth = function(){                        
-            $scope.currentDate.setMonth($scope.currentDate.getMonth()+1);
-            ctrl.refreshCalendar();
+        scope.navigate.nextMotnth = function(){                        
+            scope.currentDate.setMonth(scope.currentDate.getMonth()+1);
+            refreshCalendar();
         }
-        $scope.navigate.thisMotnth = function(){                        
-            $scope.currentDate = new Date();            
-            ctrl.refreshCalendar();
+        scope.navigate.thisMotnth = function(){                        
+            scope.currentDate = new Date();            
+            refreshCalendar();
         }
 
         // month between 1 ~ 12
-        var getDateContent = function(year,month,date){                          
+        var getDateContent = function(year,month,date){
+            console.log(year,month,date);                   
             if(contentObj != null && contentObj[year] != null && 
                 contentObj[year][month] != null && 
                 contentObj[year][month][date] != null){
@@ -78,7 +99,7 @@ app.controller('calendarController', ['$scope', '$element',
         }
 
         // month between 1 ~ 12
-        ctrl.monthGenegrator = function(month, year){            
+        var monthGenegrator = function(month, year){            
             var monthArray = [];
             var firstDay = new Date(year, month-1, 1, 0, 0, 0, 0);
             //  weekDay between 1 ~ 7 , 1 is Monday, 7 is Sunday
@@ -89,20 +110,20 @@ app.controller('calendarController', ['$scope', '$element',
             var recordDate = 0; //record which day obj already genegrate
             
             //first week row
-            monthArray.push(ctrl.weekGenegrator(year , month , recordDate-firstDayInFirstweek ,daysOfMonth , prevDaysOfMonth));
+            monthArray.push(weekGenegrator(year , month , recordDate-firstDayInFirstweek ,daysOfMonth , prevDaysOfMonth));
 
             recordDate = 7 - firstDayInFirstweek;
             //loop for following week row           
-            while(recordDate < daysOfMonth){
-                monthArray.push(ctrl.weekGenegrator(year , month , recordDate , daysOfMonth));
+            while(recordDate < daysOfMonth-1){
+                monthArray.push(weekGenegrator(year , month , recordDate , daysOfMonth));
                 recordDate += 7;                
             }
 
             //set isToday
-            if($scope.currentDate.getMonth() == $scope.today.getMonth() &&
-                $scope.currentDate.getFullYear() == $scope.today.getFullYear() ){                                            
-                var atWeek = Math.ceil(($scope.today.getDate()+firstDayInFirstweek-1) / 7) -1;
-                var atDay = ($scope.today.getDate()+firstDayInFirstweek-2) % 7;                
+            if(scope.currentDate.getMonth() == scope.today.getMonth() &&
+                scope.currentDate.getFullYear() == scope.today.getFullYear() ){                                            
+                var atWeek = Math.ceil((scope.today.getDate()+firstDayInFirstweek-1) / 7) -1;
+                var atDay = (scope.today.getDate()+firstDayInFirstweek-2) % 7;                
                 monthArray[atWeek][atDay].isToday = true;
             }            
 
@@ -110,7 +131,7 @@ app.controller('calendarController', ['$scope', '$element',
         }
 
         //month between 1~12
-        ctrl.weekGenegrator = function(year , month , startDate , daysOfMonth , prevDaysOfMonth){            
+        var weekGenegrator = function(year , month , startDate , daysOfMonth , prevDaysOfMonth){            
             var week = [];
             for(var i =  1 ; i <= 7 ; i++){
                 var 
@@ -140,22 +161,25 @@ app.controller('calendarController', ['$scope', '$element',
             return week;
         }
 
-        ctrl.refreshCalendar = function(){            
-            $scope.month = ctrl.monthGenegrator($scope.currentDate.getMonth()+1 , $scope.currentDate.getFullYear());    
+        var refreshCalendar = function(){                        
+            scope.month = monthGenegrator(scope.currentDate.getMonth()+1, scope.currentDate.getFullYear());            
         }
-        
-        ctrl.refreshCalendar();
 
-    }
-]);
+        refreshCalendar();
+
+}
 
 
 app.directive("calendar", function(){
     return{
         restrict: "E",
-        scope: { content: '=calendarContent'},
+        scope: { 
+            content: '=calendarContent',
+            assignedMonth: '=calendarMonth',
+            assignedyear: '=calendarYear'
+        },
         replace: true,
-        controller: 'calendarController',
+        link: calendarLinkFunction,
         templateUrl: '/src/calendar-template.html'
     }
 });

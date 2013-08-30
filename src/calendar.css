@@ -90,7 +90,7 @@
   background-color: #fafafa;
 }
 .cal-month-day {
-  height: 75px;
+  min-height: 75px;
 }
 [class*="cal-span"]:hover {
   background-color: #ededed;
