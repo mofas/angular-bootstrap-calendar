@@ -8,9 +8,14 @@ But. not finish ye..
 ## Installation
 
 Download the three files:
+
 1.src/calendar.css
+
 2.src/calendar.js
+
 3.src/calendar-template.html
+
+
 
 modifing templateUrl in calendar.js to indicate path of your calendar-template.html location.
 
