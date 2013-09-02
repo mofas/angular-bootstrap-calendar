@@ -21,8 +21,11 @@ Simple, Elegant, No jQuery Dependency.
 2.Download three files in src folder:
 
 src/calendar.css
+
 src/calendar.js
-src/calendar-template.html
+
+template/calendar-template.html
+
 
 3.Include the files
 
@@ -32,9 +35,9 @@ src/calendar-template.html
 ```
 
 
-
 Calendar.js and calendar-template.html need to put in the same folder,
 or you can modify the templateURl in calendar.js.
+
 
  
 ## Example

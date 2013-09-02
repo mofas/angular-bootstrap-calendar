@@ -53,6 +53,7 @@ module.exports = function (grunt) {
               lrSnippet,              
               mountFolder(connect, 'src'),
               mountFolder(connect, 'examples'),
+              mountFolder(connect, 'template')
             ];
           }
         }

@@ -1,0 +1,10 @@
+{
+  "name": "angular_bootstrap_calendar",
+  "version": "1.0.0",
+  "main": "",
+  "dependencies": {
+    "jquery": "~2.0.3",  
+    "angular": "1.2.0-rc1",
+    "angular-mocks": "1.0.7"
+  }
+}

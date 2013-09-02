@@ -8,7 +8,8 @@
     "karma-jasmine": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.0",
     "karma": "~0.10.1",
-    "grunt-karma": "~0.6.1"
+    "grunt-karma": "~0.6.1",
+    "karma-html2js-preprocessor": "*"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -27,7 +28,7 @@
     "matchdep": "~0.1.2",
     "connect-livereload": "~0.2.0",
     "grunt-google-cdn": "~0.2.0",
-    "grunt-ngmin": "~0.0.2"
+    "grunt-ngmin": "~0.0.2"    
   },
   "engines": {
     "node": ">=0.8.0"
