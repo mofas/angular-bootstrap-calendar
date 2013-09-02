@@ -1,6 +1,6 @@
 ## 
 
-# [Angular Bootstrap Calendar](http://mgcrea.github.com/angular-strap) 
+# [Angular Bootstrap Calendar](http://mofas.github.io/angular-bootstrap-calendar/examples/index.html) 
 
 
 Simple, Elegant, No jQuery Dependency.
