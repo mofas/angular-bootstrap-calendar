@@ -49,7 +49,6 @@ app.directive('ngHtml', function() {
 
 var calendarLinkFunction = function (scope, element) {                
         var contentObj = scope.content;     
-        console.log(contentObj);
         var targetMonth = parseInt(scope.assignedMonth, 10),
             targetYear = parseInt(scope.assignedyear, 10);
 
@@ -89,7 +88,6 @@ var calendarLinkFunction = function (scope, element) {
 
         // month between 1 ~ 12
         var getDateContent = function(year,month,date){
-            console.log(year,month,date);                   
             if(contentObj != null && contentObj[year] != null && 
                 contentObj[year][month] != null && 
                 contentObj[year][month][date] != null){
