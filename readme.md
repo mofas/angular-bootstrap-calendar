@@ -43,18 +43,18 @@ modifing templateUrl in calendar.js to indicate path of your calendar-template.h
 ```
 
 ``` javascript
-	$scope.calendarContent = {
-        "2013":
-        {
-          "8":
-          {
-            "29":
-            [
-              "Google it: <a href=\"http://google.com\" target=\"_blank\">Open Tab</a>"
-            ]
-          }
-        }
-	};    
+$scope.calendarContent = {
+  "2013":
+  {
+    "8":
+    {
+      "29":
+      [
+        "Google it: <a href=\"http://google.com\" target=\"_blank\">Open Tab</a>"
+      ]
+    }
+  }
+};    
 ```
 
 ##License
