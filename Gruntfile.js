@@ -47,15 +47,15 @@ module.exports = function (grunt) {
         hostname: 'localhost'
       },
       livereload: {
-        // options: {
-        //   middleware: function (connect) {
-        //     return [
-        //       lrSnippet,
-        //       mountFolder(connect, '.tmp'),
-        //       mountFolder(connect, yeomanConfig.app)
-        //     ];
-        //   }
-        // }
+        options: {
+          middleware: function (connect) {
+            return [
+              lrSnippet,              
+              mountFolder(connect, 'src'),
+              mountFolder(connect, 'examples'),
+            ];
+          }
+        }
       },
       test: {
         options: {
