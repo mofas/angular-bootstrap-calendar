@@ -10,18 +10,31 @@ Simple, Elegant, No jQuery Dependency.
 
 ## Installation
 
-Download the three files:
+1.Include the required libraries
 
-1.src/calendar.css
-
-2.src/calendar.js
-
-3.src/calendar-template.html
-
+``` html
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+```
 
 
-modifing templateUrl in calendar.js to indicate path of your calendar-template.html location.
+2.Download three files in src folder:
 
+src/calendar.css
+src/calendar.js
+src/calendar-template.html
+
+3.Include the files
+
+``` html
+<link rel="stylesheet" href="calendar.css">
+<script src="calendar.js"></script>
+```
+
+
+
+Calendar.js and calendar-template.html need to put in the same folder,
+or you can modify the templateURl in calendar.js.
 
  
 ## Example
