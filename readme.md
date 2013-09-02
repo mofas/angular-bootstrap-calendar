@@ -24,7 +24,7 @@ src/calendar.css
 
 src/calendar.js
 
-template/calendar-template.html
+src/calendar-template.html
 
 
 3.Include the files
