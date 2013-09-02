@@ -180,7 +180,7 @@ app.directive("calendar", function(){
         },
         replace: true,
         link: calendarLinkFunction,
-        templateUrl: 'src/calendar-template.html'
+        templateUrl: '../src/calendar-template.html'
     }
 });
 
